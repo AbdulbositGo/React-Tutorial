@@ -1,0 +1,25 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #F55A5A;
+  display: flex;
+  justify-content: center;
+  color: white;
+  align-items: center;
+  height: 55px;
+  gap: 7px;
+}
+
+header>img {
+  width: 24px;
+}
+
+header>h1 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: sans-serif;
+}
