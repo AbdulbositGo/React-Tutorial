@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { Ingredients } from "./Ingrediants"
+import { GetRecipies } from "./GetRecepies"
 
 
 export function Main() {
@@ -31,22 +33,13 @@ export function Main() {
                 </button>
             </form>
             {ingredients.length > 0 && (
-                <div className="space-y-6 transition duration-150 ease-in-out">
-                    <div className="space-y-6">
-                        <h1 className="text-3xl font-bold">Ingredients on hand</h1>
-                        <ul className="list-disc ms-6 space-y-5 text-lg text-gray-600">
-                            {ingredientsListItems}
-                        </ul>
-                    </div>
-                    <footer className="flex items-center justify-between bg-gray-200 rounded-lg p-8">
-                        <div>
-                            <h1 className="text-xl font-semibold">Ready for a recipe?</h1>
-                            <span className="text-sm text-gray-500">Generate a recipe from your list of ingredients</span>
-                        </div>
-                        <button className="px-4 py-2 bg-orange-600 text-white rounded-lg">Get a recipe</button>
-                    </footer>
-                </div>
+                <Ingredients ingredientsListItems={ingredientsListItems} />
+
             )}
+            {ingredients.length > 3 && (
+                <GetRecipies />
+            )}
+
         </main>
     )
 }
