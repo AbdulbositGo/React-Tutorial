@@ -9,12 +9,7 @@ export function Main() {
     const [ingredients, setIngredients] = useState([])
     const [formError, setFormError] = useState(false)
     const [getRecipe, setGetRecipe] = useState(false)
-    const ingredientsListItems = ingredients.map(
-        ingredient =>
-        (
-            <li key={ingredient}>{ingredient}</li>
-        )
-    )
+
 
     const makeRecipe = () => {
         setGetRecipe(true)
@@ -38,13 +33,8 @@ export function Main() {
                     + Add ingredients
                 </button>
             </form>
-            {ingredients.length > 0 && (
-                <Ingredients ingredientsListItems={ingredientsListItems} />
-
-            )}
-            {ingredients.length > 3 && (
-                <GetRecipes makeRecipe={makeRecipe} />
-            )}
+            {ingredients.length > 0 && <Ingredients ingredients={ingredients} />}
+            {ingredients.length > 3 && <GetRecipes makeRecipe={makeRecipe} />}
             {getRecipe && <Recipe />}
 
         </main>
