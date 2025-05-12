@@ -36,7 +36,6 @@ export function Main() {
             {ingredients.length > 0 && <Ingredients ingredients={ingredients} />}
             {ingredients.length > 3 && <GetRecipes makeRecipe={makeRecipe} />}
             {getRecipe && <Recipe />}
-
         </main>
     )
 }

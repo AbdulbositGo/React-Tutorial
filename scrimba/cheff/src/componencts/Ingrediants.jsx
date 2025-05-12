@@ -1,5 +1,4 @@
 
-
 export function Ingredients({ ingredients }) {
     const ingredientsListItems = ingredients.map(
         ingredient =>
