@@ -1,18 +1,24 @@
 import { useState } from "react"
 import { Ingredients } from "./Ingrediants"
-import { GetRecipies } from "./GetRecepies"
+import { GetRecipes } from "./GetRecipes"
+import { Recipe } from "./Recipe"
 
 
 export function Main() {
 
     const [ingredients, setIngredients] = useState([])
     const [formError, setFormError] = useState(false)
+    const [getRecipe, setGetRecipe] = useState(false)
     const ingredientsListItems = ingredients.map(
         ingredient =>
         (
             <li key={ingredient}>{ingredient}</li>
         )
     )
+
+    const makeRecipe = () => {
+        setGetRecipe(true)
+    }
 
     function addIngedient(formData) {
         const ingredient = formData.get('ingredient')
@@ -37,8 +43,9 @@ export function Main() {
 
             )}
             {ingredients.length > 3 && (
-                <GetRecipies />
+                <GetRecipes makeRecipe={makeRecipe} />
             )}
+            {getRecipe && <Recipe />}
 
         </main>
     )
