@@ -1,15 +1,24 @@
 import { Header } from "./components/Header"
 import { Form } from "./components/Form"
 import { Image } from "./components/Image"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 function App() {
 
   const [meme, setMeme] = useState({
-    image: 'http://i.imgflip.com/1bij.jpg',
+    image: "http://i.imgflip.com/1bij.jpg",
     topText: "One does not simply",
-    bottomText: 'walk into mordor'
+    bottomText: "walk into mordor"
   })
+  const [allMemes, setAllMemes] = useState([])
+
+  useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes").then(
+      res => res.json()
+    ).then(
+      data => setAllMemes(data.data.memes)
+    )
+  }, [])
 
   function handleChange(event) {
     const { value, name } = event.currentTarget
