@@ -4,7 +4,10 @@ import { nanoid } from 'nanoid';
 
 
 const Main = () => {
-    const genarateDieObjs = () => {
+    const [dieObjects, setDieObjects] = useState(genarateDieObjs())
+    const dies = dieObjects.map(die => <Die id={die.id} value={die.value} isHeld={die.isHeld} key={die.id} holdDie={holdDie} />)
+
+    function genarateDieObjs() {
         return new Array(10).fill(0).
             map(() => (
                 {
@@ -14,18 +17,33 @@ const Main = () => {
                 }
             ))
     }
-    const rollDice = () => {
+
+    function rollDice() {
         setDieObjects(odlDice => odlDice.map(die =>
             die.isHeld ? die : { ...die, value: Math.ceil(Math.random() * 6) }
         ))
     }
-    const holdDie = (id) => {
+
+    function holdDie(id) {
         setDieObjects(odlDice => odlDice.map(die =>
             die.id === id ? { ...die, isHeld: !die.isHeld } : die
         ))
     }
-    const [dieObjects, setDieObjects] = useState(genarateDieObjs())
-    const dies = dieObjects.map(die => <Die id={die.id} value={die.value} isHeld={die.isHeld} key={die.id} holdDie={holdDie} />)
+
+    // let won = false
+    // let count = 0;
+    // let correct = 0
+    // let value = 1
+    // dieObjects.map(die => {
+    //     die.isHeld ? count++ : count
+    //     correct += die.value
+    //     value = die.value
+    // })
+    // if (count === 10 && (correct / value) === 10) won = true
+
+    const won = dieObjects.every(die => die.isHeld) &&
+        dieObjects.every(die => die.value == dieObjects[0].value)
+
 
     return (
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
@@ -34,7 +52,9 @@ const Main = () => {
                 <div className="grid gap-4 grid-cols-5 w-full place-items-center">
                     {dies}
                 </div>
-                <button onClick={rollDice} type="button" className="focus:outline-none text-white focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-xl px-5 py-2.5 mb-2 bg-purple-600 hover:bg-purple-700 focus:ring-purple-900">Start</button>
+                <button onClick={rollDice} type="button" className="focus:outline-none text-white focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-xl px-5 py-2.5 mb-2 bg-purple-600 hover:bg-purple-700 focus:ring-purple-900">
+                    {won ? 'New Game' : 'Roll'}
+                </button>
             </div>
         </div>
     );
