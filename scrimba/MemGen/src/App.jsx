@@ -13,6 +13,7 @@ function App() {
   const [allMemes, setAllMemes] = useState([])
 
   useEffect(() => {
+    console.log('lkhslfs');
     fetch("https://api.imgflip.com/get_memes").then(
       res => res.json()
     ).then(
@@ -22,10 +23,19 @@ function App() {
 
   function handleChange(event) {
     const { value, name } = event.currentTarget
-
     setMeme(prev => ({
       ...prev,
       [name]: value
+    }))
+  }
+
+  function changeImage() {
+    const random_num = Math.floor(Math.random() * allMemes.length)
+    const newImage = allMemes[random_num].url
+
+    setMeme(prev => ({
+      ...prev,
+      image: newImage
     }))
   }
 
@@ -33,7 +43,7 @@ function App() {
     <>
       <Header />
       <main className="max-w-screen-md m-auto py-10 px-4 space-y-6">
-        <Form meme={meme} handleChange={handleChange} />
+        <Form meme={meme} handleChange={handleChange} changeImage={changeImage} />
         <Image image={meme.image} topText={meme.topText} bottomText={meme.bottomText} />
       </main>
     </>
