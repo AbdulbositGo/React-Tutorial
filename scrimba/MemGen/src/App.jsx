@@ -13,7 +13,6 @@ function App() {
   const [allMemes, setAllMemes] = useState([])
 
   useEffect(() => {
-    console.log('lkhslfs');
     fetch("https://api.imgflip.com/get_memes").then(
       res => res.json()
     ).then(
