@@ -3,7 +3,7 @@
 
 const Die = (props) => {
     return (
-        <button className="self-center bg-gray-50 size-20 border rounded-xl shadow shadow-gray-600 block p-2.5 bg-gray-700 border-gray-600 text-white text-4xl font-extrabold focus:ring-blue-500 focus:border-blue-500">
+        <button onClick={() => props.holdDie(props.id)} className={`${props.isHeld ? 'bg-green-400 text-black shadow-green-600' : 'bg-gray-700 text-white shadow-gray-600'} self-center size-20 border rounded-xl shadow block p-2.5 border-gray-600 text-4xl font-extrabold focus:outline-none`}>
             {props.value}
         </button>
     );
