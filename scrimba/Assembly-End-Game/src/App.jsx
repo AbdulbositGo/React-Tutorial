@@ -10,13 +10,17 @@ import { useState } from "react"
 function App() {
   const [word, setWord] = useState('react')
   const [guessedLetters, setGuessedLetters] = useState([])
-  const alphabet = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('')
-  const gameWon = includesAll(guessedLetters, word.toUpperCase().split(''))
+
+  const alphabet = 'qwertyuiopasdfghjklzxcvbnm'.split('')
+  const wrongGuesses = guessedLetters.filter(letter => !word.includes(letter))
+
+  const gameLost = wrongGuesses.length >= 8;
+  const gameWon = includesAll(guessedLetters, word.split(''));
+  const gameOver = gameWon || gameLost;
 
   function includesAll(arr1, arr2) {
     return arr2.every(item => arr1.includes(item));
   }
-
 
   function addGuessedLetters(letter) {
     setGuessedLetters(oldLetters =>
@@ -24,24 +28,33 @@ function App() {
     )
   }
 
+  function newGame() {
+    setGuessedLetters([])
+  }
+
   return (
     <>
       <section className="bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
         <div className="p-4 w-full flex flex-col gap-6 rounded-2xl min-h-1/2 max-h-9/10 shadow border max-w-2xl bg-gray-800 border-gray-700">
           <Header />
-          {gameWon && <Status />}
+          {gameOver && <Status gameWon={gameWon} />}
 
-          <Budges languages={Languages} />
+          <Budges languages={Languages} wrongGuesses={wrongGuesses.length} />
+
           <Words
             gameWon={gameWon}
+            gameOver={gameOver}
             word={word}
             guessedLetters={guessedLetters} />
+
           <Main
             gameWon={gameWon}
+            gameOver={gameOver}
+            newGame={newGame}
             alphabet={alphabet}
             func={addGuessedLetters}
             guessedLetters={guessedLetters}
-            word={word.toUpperCase().split('')} />
+            word={word.split('')} />
         </div>
       </section>
     </>
