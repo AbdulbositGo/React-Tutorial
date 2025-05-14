@@ -4,9 +4,19 @@ import Status from "./components/Status"
 import Words from "./components/Words"
 import Budges from "./components/Budges"
 import { Languages } from './languages'
+import { useState } from "react"
 
 
 function App() {
+  const [word, setWord] = useState('react')
+  const [guessedLetters, setGuessedLetters] = useState([])
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('')
+
+  function addGuessedLetters(letter) {
+    setGuessedLetters(oldLetters =>
+      oldLetters.includes(letter) ? oldLetters : [...oldLetters, letter]
+    )
+  }
 
   return (
     <>
@@ -15,8 +25,8 @@ function App() {
           <Header />
           <Status />
           <Budges languages={Languages} />
-          <Words />
-          <Main />
+          <Words word={word} />
+          <Main alphabet={alphabet} func={addGuessedLetters} />
         </div>
       </section>
     </>
