@@ -58,7 +58,7 @@ const Main = () => {
                 <div className="grid gap-4 grid-cols-5 w-full place-items-center">
                     {dies}
                 </div>
-                <button onClick={rollDice} type="button" ref={wonButton} className="focus:outline-none text-white focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-xl px-5 py-2.5 mb-2 bg-purple-600 hover:bg-purple-700 focus:ring-purple-900">
+                <button onClick={rollDice} type="button" ref={wonButton} className="focus:outline-none text-white focus:ring-4 font-medium rounded-lg text-xl px-5 py-2.5 mb-2 bg-purple-600 hover:bg-purple-700 focus:ring-purple-900">
                     {won ? 'New Game' : 'Roll'}
                 </button>
 
