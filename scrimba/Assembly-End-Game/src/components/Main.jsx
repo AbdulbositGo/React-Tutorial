@@ -5,12 +5,14 @@ const Main = ({ gameOver, newGame, alphabet, func, guessedLetters, word }) => {
     const alphabetElements = alphabet.map(letter => {
         const isGuessed = guessedLetters.includes(letter)
         const isCorrect = isGuessed && word.includes(letter)
+        const className = clsx(isGuessed ? isCorrect ? 'bg-green-500' : 'bg-red-500' : 'bg-yellow-500', 'size-10 p-1 rounded font-semibold')
 
         return (
             <button
                 onClick={() => func(letter)}
                 key={letter}
-                className={clsx(isGuessed ? isCorrect ? 'bg-green-500' : 'bg-red-500' : 'bg-yellow-500', 'size-10 p-1 rounded font-semibold')}
+                disabled={gameOver}
+                className={className}
             >
                 {letter.toUpperCase()}
             </button >
