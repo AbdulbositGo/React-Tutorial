@@ -1,5 +1,5 @@
 import { words } from './words';
 
 export function getRandomWord() {
-    return words[Math.ceil(Math.random() * words.length)]
+    return words[Math.floor(Math.random() * words.length)]
 }

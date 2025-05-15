@@ -6,6 +6,7 @@ import Words from "./components/Words"
 import Budges from "./components/Budges"
 import { Languages } from "./languages"
 import { getRandomWord } from "./utils"
+import Confetti from 'react-confetti'
 
 function App() {
   const [word, setWord] = useState(() => getRandomWord())
@@ -38,6 +39,7 @@ function App() {
       <section className="bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
         <div className="p-4 w-full flex flex-col gap-6 rounded-2xl min-h-1/2 max-h-9/10 shadow border max-w-2xl bg-gray-800 border-gray-700">
           <Header />
+          {gameWon && <Confetti recycle={false} numberOfPieces={500} />}
           {(gameOver || wrongGuesses.length > 0) &&
             <Status
               languages={Languages}
