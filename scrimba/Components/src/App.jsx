@@ -15,7 +15,7 @@ function App() {
                 </Button>
                 <Dropdown>
                     {items.map(item => (
-                        <Item>{item}</Item>
+                        <Item key={item}>{item}</Item>
                     ))}
                 </Dropdown>
             </Menu>

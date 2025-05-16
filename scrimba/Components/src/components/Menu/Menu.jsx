@@ -1,10 +1,20 @@
-import React from 'react'
+import { Children, cloneElement, useState } from 'react'
 
 
 const Menu = ({ children }) => {
+    const [open, setOpen] = useState(false)
+
+    const toggle = () => {
+        setOpen(prev => !prev)
+    }
+
     return (
         <>
-            {children}
+            {Children.map(children, child => (
+                cloneElement(child,
+                    { open, toggle }
+                )
+            ))}
         </>
     )
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 import { default as ButtonBase } from './../Button/Button'
 
-const Button = ({ children }) => {
+const Button = ({ toggle, children }) => {
     return (
-        <ButtonBase>{children}</ButtonBase>
+        <ButtonBase onClick={toggle}>{children}</ButtonBase>
     )
 }
 
