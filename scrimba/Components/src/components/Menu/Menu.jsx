@@ -1,5 +1,7 @@
-import { Children, cloneElement, useState } from 'react'
+import { createContext, useState } from 'react'
 
+
+const MenuContext = createContext()
 
 const Menu = ({ children }) => {
     const [open, setOpen] = useState(false)
@@ -10,13 +12,12 @@ const Menu = ({ children }) => {
 
     return (
         <>
-            {Children.map(children, child => (
-                cloneElement(child,
-                    { open, toggle }
-                )
-            ))}
+            <MenuContext.Provider value={{ open, toggle }}>
+                {children}
+            </MenuContext.Provider>
         </>
     )
 }
 
 export default Menu
+export { MenuContext }
