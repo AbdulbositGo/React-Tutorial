@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import VanDetail from '../components/VanDetail';
+import { Link } from 'react-router-dom';
 
 
 const Vans = () => {
@@ -30,19 +31,20 @@ const Vans = () => {
     }, []);
 
     const vanElements = vans.map(van => (
-        <VanDetail
-            key={van.id}
-            name={van.name}
-            imageUrl={van.imageUrl}
-            price={van.price}
-            type={van.type} />
+        <Link to={`/vans/${van.id}`}>
+            <VanDetail
+                key={van.id}
+                name={van.name}
+                imageUrl={van.imageUrl}
+                price={van.price}
+                type={van.type} />
+        </Link>
     ))
 
     return (
         <section className="py-8 antialiased md:py-12">
             <div className="mx-auto max-w-screen-lg px-4 2xl:px-0 space-y-14">
                 <h2 className="text-xl font-semibold text-gray-900 sm:text-2xl">Explore our van options</h2>
-
                 <div className="grid gap-8 grid-cols-2 md:grid-cols-3 xl:grid-cols-4 space-y-8">
                     {vanElements}
                 </div>
