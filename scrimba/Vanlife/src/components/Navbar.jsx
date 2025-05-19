@@ -8,7 +8,7 @@ const Navbar = () => {
                 <Link to='/' className="font-extrabold text-2xl">
                     #VANLIFE
                 </Link>
-                <ul className="font-medium flex gap-2 text-gray-700">
+                <ul className="font-medium flex gap-4 text-gray-700">
                     <li>
                         <Link to='/' aria-current="page">Home</Link>
                     </li>
