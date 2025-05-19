@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import RentButton from '../components/RentButton'
+import { Detail as Sceleton } from '../components/sceletons/Detail'
+
 
 const Detail = () => {
     const params = useParams()
@@ -32,7 +34,7 @@ const Detail = () => {
     }
 
     if (!van) {
-        return <div>Loading...</div>
+        return <Sceleton />
     }
 
     return (
