@@ -38,7 +38,7 @@ const Detail = () => {
 
     return (van &&
         <>
-            <div><Link to="/vans">Back to all vans</Link></div>
+            <div className="underline"><Link to="/vans">Back to all vans</Link></div>
             <div className="h-1/3 w-full">
                 <img className="h-96 object-center object-cover w-full rounded-lg" src={van.imageUrl} alt="" />
             </div>
@@ -48,7 +48,7 @@ const Detail = () => {
                 </button>
             </div>
 
-            <h1>{van.name}</h1>
+            <h1 className="text-3xl font-bold">{van.name}</h1>
 
             <div className="">
                 <p className="font-bold text-lg">${van.price} /day</p>
