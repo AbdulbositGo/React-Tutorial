@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import { useParams, NavLink, Outlet } from 'react-router-dom'
 import getColor from '../utility'
 
+
+const HostVanContext = createContext()
 
 const HostVanLayout = () => {
     const [van, setVan] = useState(null)
@@ -27,7 +29,7 @@ const HostVanLayout = () => {
     const color = getColor(van)
 
     return (
-        <>
+        <HostVanContext.Provider value={{ van }}>
             <div className="underline mb-6"><NavLink to=".." relative="path">Back to all vans</NavLink></div>
             <div className="space-y-6 rounded-lg bg-white p-6">
                 <div className="items-center rounded-lg flex ">
@@ -59,8 +61,9 @@ const HostVanLayout = () => {
                     <Outlet />
                 </div>
             </div >
-        </>
+        </HostVanContext.Provider>
     )
 }
 
 export default HostVanLayout
+export { HostVanContext }
