@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { VanDetail } from './VanDetail'
+
 
 const Vans = () => {
     const params = useParams()
