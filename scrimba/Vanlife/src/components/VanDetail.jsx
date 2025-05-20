@@ -3,6 +3,7 @@
 
 const VanDetail = ({ name, imageUrl, price, type }) => {
     let color = null
+
     switch (type) {
         case "simple":
             color = "bg-[#E17654]";

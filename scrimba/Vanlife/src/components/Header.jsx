@@ -10,7 +10,7 @@ const Navbar = () => {
                 </Link>
                 <ul className="font-medium flex gap-4 text-gray-700">
                     <li>
-                        <Link to='/' aria-current="page">Home</Link>
+                        <Link to='/host' aria-current="page">Host</Link>
                     </li>
                     <li>
                         <Link to='/about' aria-current="page">About</Link>

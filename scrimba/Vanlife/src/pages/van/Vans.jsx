@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import VanDetail from '../components/VanDetail';
+import VanDetail from '../../components/VanDetail';
+import { Vans as Sceleton } from '../../components/sceletons/Vans'
 import { Link } from 'react-router-dom';
 
 
+
 const Vans = () => {
-    const [vans, setVans] = useState([]);
+    const [vans, setVans] = useState(null);
 
 
     async function fetchVans() {
@@ -30,10 +32,13 @@ const Vans = () => {
         getVans();
     }, []);
 
+    if (!vans) {
+        return <Sceleton />
+    }
+
     const vanElements = vans.map(van => (
-        <Link to={`/vans/${van.id}`}>
+        <Link to={`/vans/${van.id}`} key={van.id} >
             <VanDetail
-                key={van.id}
                 name={van.name}
                 imageUrl={van.imageUrl}
                 price={van.price}
@@ -42,14 +47,12 @@ const Vans = () => {
     ))
 
     return (
-        <section className="py-8 antialiased md:py-12">
-            <div className="mx-auto max-w-screen-lg px-4 2xl:px-0 space-y-14">
-                <h2 className="text-xl font-semibold text-gray-900 sm:text-2xl">Explore our van options</h2>
-                <div className="grid gap-8 grid-cols-2 md:grid-cols-3 xl:grid-cols-4 space-y-8">
-                    {vanElements}
-                </div>
+        <>
+            <h2 className="text-xl font-semibold text-gray-900 sm:text-2xl">Explore our van options</h2>
+            <div className="grid gap-8 grid-cols-2 md:grid-cols-3 xl:grid-cols-4 space-y-8">
+                {vanElements}
             </div>
-        </section>
+        </>
     )
 }
 
