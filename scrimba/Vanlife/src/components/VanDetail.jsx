@@ -1,22 +1,9 @@
+import getColor from "../utility"
 
 
 
 const VanDetail = ({ name, imageUrl, price, type }) => {
-    let color = null
-
-    switch (type) {
-        case "simple":
-            color = "bg-[#E17654]";
-            break;
-        case "rugged":
-            color = "bg-[#115E59]";
-            break;
-        case "luxury":  // Also corrected the spelling of 'luxury'
-            color = "bg-[#161616]";
-            break;
-        default:
-            color = "bg-[#FFFFFF]";
-    }
+    const color = getColor({ type })
 
     return (
         <div className="space-y-8">

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import RentButton from '../../components/RentButton'
 import { Detail as Sceleton } from '../../components/sceletons/Detail'
+import getColor from '../../utility'
 
 
 const Detail = () => {
@@ -16,21 +17,7 @@ const Detail = () => {
             .catch(error => console.error("Failed to fetch van:", error))
     }, [params.id])
 
-    let color = "bg-[#FFFFFF]"
-
-    if (van) {
-        switch (van.type) {
-            case "simple":
-                color = "bg-[#E17654]";
-                break;
-            case "rugged":
-                color = "bg-[#115E59]";
-                break;
-            case "luxury":
-                color = "bg-[#161616]";
-                break;
-        }
-    }
+    const color = getColor(van)
 
     if (!van) {
         return <Sceleton />

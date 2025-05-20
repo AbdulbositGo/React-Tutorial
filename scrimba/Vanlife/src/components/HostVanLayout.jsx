@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, NavLink, Outlet } from 'react-router-dom'
+import getColor from '../utility'
 
 
 const HostVanLayout = () => {
@@ -18,29 +19,16 @@ const HostVanLayout = () => {
             .catch(err => console.error("Fetch error:", err))
     }, [params.id])
 
-    let color = "bg-[#FFFFFF]"
 
     if (!van) {
         return <h1>Loading...</h1>
     }
 
-    if (van) {
-        switch (van.type) {
-            case "simple":
-                color = "bg-[#E17654]";
-                break;
-            case "rugged":
-                color = "bg-[#115E59]";
-                break;
-            case "luxury":
-                color = "bg-[#161616]";
-                break;
-        }
-    }
+    const color = getColor(van)
 
     return (
         <>
-            <div className="underline mb-6"><NavLink to="/vans">Back to all vans</NavLink></div>
+            <div className="underline mb-6"><NavLink to=".." relative="path">Back to all vans</NavLink></div>
             <div className="space-y-6 rounded-lg bg-white p-6">
                 <div className="items-center rounded-lg flex ">
                     <div className="h-52">
@@ -58,13 +46,13 @@ const HostVanLayout = () => {
                 </div>
                 <ul className="font-medium flex gap-4 text-gray-700 ">
                     <li className="hover:underline hover:text-black">
-                        <NavLink to={`/host/vans/${van.id}`} aria-current="page">Detail</NavLink>
+                        <NavLink to="." aria-current="page">Detail</NavLink>
                     </li>
                     <li className="hover:underline hover:text-black">
-                        <NavLink to={`/host/vans/${van.id}/pricing`} aria-current="page">Pricing</NavLink>
+                        <NavLink to="pricing" aria-current="page">Pricing</NavLink>
                     </li>
                     <li className="hover:underline hover:text-black">
-                        <NavLink to={`/host/vans/${van.id}/photos`} aria-current="page">Photos</NavLink>
+                        <NavLink to="photos" aria-current="page">Photos</NavLink>
                     </li>
                 </ul>
                 <div className="mt-6 sm:mt-8 lg:mt-0">
