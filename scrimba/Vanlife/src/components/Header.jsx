@@ -1,22 +1,23 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { getActiveLink } from '../utility'
 
 const Navbar = () => {
     return (
         <nav>
             <div className="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto py-4">
-                <Link to='.' className="font-extrabold text-2xl">
+                <NavLink to='.' className="font-extrabold text-2xl">
                     #VANLIFE
-                </Link>
+                </NavLink>
                 <ul className="font-medium flex gap-4 text-gray-700">
                     <li>
-                        <Link to='host' aria-current="page">Host</Link>
+                        <NavLink to='host' className={getActiveLink} aria-current="page">Host</NavLink>
                     </li>
                     <li>
-                        <Link to='about' aria-current="page">About</Link>
+                        <NavLink to='about' className={getActiveLink} aria-current="page">About</NavLink>
                     </li>
                     <li>
-                        <Link to='vans' aria-current="page">Vans</Link>
+                        <NavLink to='vans' className={getActiveLink} aria-current="page">Vans</NavLink>
                     </li>
                 </ul>
             </div>

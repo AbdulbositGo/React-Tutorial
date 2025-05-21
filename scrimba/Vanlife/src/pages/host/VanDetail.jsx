@@ -1,10 +1,8 @@
-import { useContext } from "react"
-import { HostVanContext } from "../../components/HostVanLayout"
-
+import { useOutletContext } from "react-router-dom";
 
 
 const VanDetail = () => {
-    const { van } = useContext(HostVanContext)
+    const [van] = useOutletContext();
 
     return (
         <div className="space-y-6">
@@ -29,7 +27,7 @@ const VanDetail = () => {
 
 
 const VanPricing = () => {
-    const { van } = useContext(HostVanContext)
+    const [van] = useOutletContext();
 
     return (
         <div className="flex gap-1 items-end py-6">
@@ -41,7 +39,7 @@ const VanPricing = () => {
 
 
 const VanPhotos = () => {
-    const { van } = useContext(HostVanContext)
+    const [van] = useOutletContext();
 
     return (
         <div>

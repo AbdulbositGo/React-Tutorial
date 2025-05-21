@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { useParams, NavLink, Outlet } from 'react-router-dom'
-import getColor from '../utility'
+import getColor, { getActiveLink } from '../utility'
 
 
 const HostVanContext = createContext()
@@ -48,17 +48,17 @@ const HostVanLayout = () => {
                 </div>
                 <ul className="font-medium flex gap-4 text-gray-700 ">
                     <li className="hover:underline hover:text-black">
-                        <NavLink to="." aria-current="page">Detail</NavLink>
+                        <NavLink to="." className={getActiveLink} end aria-current="page">Detail</NavLink>
                     </li>
                     <li className="hover:underline hover:text-black">
-                        <NavLink to="pricing" aria-current="page">Pricing</NavLink>
+                        <NavLink to="pricing" className={getActiveLink} aria-current="page">Pricing</NavLink>
                     </li>
                     <li className="hover:underline hover:text-black">
-                        <NavLink to="photos" aria-current="page">Photos</NavLink>
+                        <NavLink to="photos" className={getActiveLink} aria-current="page">Photos</NavLink>
                     </li>
                 </ul>
                 <div className="mt-6 sm:mt-8 lg:mt-0">
-                    <Outlet />
+                    <Outlet context={[van]} />
                 </div>
             </div >
         </HostVanContext.Provider>

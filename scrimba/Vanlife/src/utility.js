@@ -20,5 +20,5 @@ export default function getColor(van) {
 }
 
 export function getActiveLink({ isActive }) {
-    return isActive
+    return isActive && "font-bold underline decoration-2"
 }
