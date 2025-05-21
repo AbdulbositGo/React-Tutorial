@@ -37,7 +37,9 @@ const Vans = () => {
     }
 
     const vanElements = vans.map(van => (
-        <Link to={`/vans/${van.id}`} key={van.id} >
+        <Link
+            to={`${van.id}`}
+            key={van.id} >
             <VanDetail
                 name={van.name}
                 imageUrl={van.imageUrl}

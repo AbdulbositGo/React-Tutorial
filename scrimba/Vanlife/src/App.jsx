@@ -22,7 +22,6 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
-
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="vans" element={<Vans />} />
@@ -31,6 +30,7 @@ function App() {
           <Route path="host" element={<HostLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="income" element={<Income />} />
+            <Route path="reviews" element={<Reviews />} />
             <Route path="vans" element={<HostVans />} />
 
             <Route path="vans/:id" element={<HostVanLayout />}>

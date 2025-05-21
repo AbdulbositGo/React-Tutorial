@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 const Vans = () => {
-    const params = useParams()
     const [vans, setVans] = useState(null)
 
     useEffect(() => {
@@ -12,7 +11,7 @@ const Vans = () => {
         ).then(
             rawVans => setVans(rawVans)
         )
-    }, [vans])
+    }, [])
 
 
     if (!vans) {
@@ -20,17 +19,19 @@ const Vans = () => {
     }
 
     const vanElements = vans.map(van => (
-        <Link key={van.id} to={`/host/vans/${van.id}`} className="p-4 items-center bg-gray-50 rounded-lg flex">
+        <Link
+            to={`${van.id}`}
+            key={van.id}
+            className="p-4 items-center bg-white rounded-lg flex"
+        >
             <div className="h-28">
                 <img className="h-full w-auto object-center object-cover  rounded-lg" src={van.imageUrl} alt="" />
             </div>
             <div className="p-5">
-
                 <h3 className="text-xl font-bold tracking-tight text-gray-900">
                     <p>{van.name}</p>
                 </h3>
                 <span className="text-gray-500 ">${van.price} /day</span>
-
             </div>
         </Link>
     ))
