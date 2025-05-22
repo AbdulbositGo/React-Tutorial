@@ -64,7 +64,9 @@ const Vans = () => {
                     </li>
                 </ul>
                 {type &&
-                    <NavLink to="." className="rounded-lg py-1 px-3  hover:text-white hover:bg-gray-700" aria-current="page">Clear</NavLink>
+                    <div>
+                        <NavLink to="." className="rounded-lg py-1 px-3  hover:bg-gray-200" aria-current="page">Clear</NavLink>
+                    </div>
                 }
             </nav>
             <div className="grid gap-8 grid-cols-2 md:grid-cols-3 xl:grid-cols-4 space-y-8">
