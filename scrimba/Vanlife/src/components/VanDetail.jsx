@@ -18,9 +18,9 @@ const VanDetail = ({ name, imageUrl, price, type }) => {
                         <p className="text-xs">/day</p>
                     </div>
                 </div>
-                <button type="button" className={`inline-flex items-center rounded ${color} px-5 py-2.5 text-sm font-medium  text-white focus:outline-none`}>
+                <div className={`inline-flex items-center rounded ${color} px-5 py-2.5 text-sm font-medium  text-white focus:outline-none`}>
                     {type}
-                </button>
+                </div>
             </div>
         </div>
     )

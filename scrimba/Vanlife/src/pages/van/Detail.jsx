@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import RentButton from '../../components/RentButton'
-import { Detail as Sceleton } from '../../components/sceletons/Detail'
+import { Detail as Skeleton } from '../../components/skeletons/Detail'
 import getColor from '../../utility'
 
 
@@ -20,7 +20,7 @@ const Detail = () => {
     const color = getColor(van)
 
     if (!van) {
-        return <Sceleton />
+        return <Skeleton />
     }
 
     return (van &&
